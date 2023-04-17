@@ -1,0 +1,83 @@
+(llama_index) @Kevins-MacBook-Pro:sg_marvin $ python test.py
+[04/14/23 09:17:13] INFO     marvin.marvin: Using OpenAI model "gpt-3.5-turbo"                                                                                                                      logging.py:50
+                    DEBUG    marvin.Bot: User message: Use load-and-store-url to store https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax to topic ShotGrid             logging.py:60
+DEBUG [marvin.Bot] [bold blue]User message: [/][default on default]Use load-and-store-url to store https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax to topic ShotGrid[/]
+[04/14/23 09:17:21] DEBUG    marvin.Bot: Plugin payload: {'action': 'run-plugin', 'name': 'load-and-store-url', 'inputs': {'url':                                                                   logging.py:60
+                             'https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax', 'topic_name': 'ShotGrid'}}
+DEBUG [marvin.Bot] [default on default]Plugin payload: [/][default on default]{'action': 'run-plugin', 'name': 'load-and-store-url', 'inputs': {'url': 'https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax', 'topic_name': 'ShotGrid'}}[/]
+                    DEBUG    marvin.Bot: Running plugin "load-and-store-url": {'url': 'https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax', 'topic_name': 'ShotGrid'}   logging.py:60
+DEBUG [marvin.Bot] [default on default]Running plugin "load-and-store-url": [/][default on default]{'url': 'https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax', 'topic_name': 'ShotGrid'}[/]
+[04/14/23 09:17:22] DEBUG    marvin.URLLoader: Loaded document from https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax                                                      web.py:67
+DEBUG [marvin.URLLoader] Loaded document from https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax
+--- Logging error ---
+Traceback (most recent call last):
+  File "/Users/kevin/dev/sg_marvin/test.py", line 51, in <module>
+    asyncio.run(main())
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/nest_asyncio.py", line 35, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/nest_asyncio.py", line 90, in run_until_complete
+    return f.result()
+           ^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/3.11.1/lib/python3.11/asyncio/futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "/Users/kevin/.pyenv/versions/3.11.1/lib/python3.11/asyncio/tasks.py", line 269, in __step
+    result = coro.throw(exc)
+             ^^^^^^^^^^^^^^^
+  File "/Users/kevin/dev/sg_marvin/test.py", line 47, in main
+    await bot.say("Use load-and-store-url to store https://developer.shotgridsoftware.com/python-api/reference.html#filter-syntax to topic ShotGrid")
+  File "/Users/kevin/dev/marvin/src/marvin/bot/base.py", line 371, in say
+    bot_response = await self._say(
+                   ^^^^^^^^^^^^^^^^
+  File "/Users/kevin/dev/marvin/src/marvin/bot/base.py", line 436, in _say
+    llm_response = await self._call_llm(
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/dev/marvin/src/marvin/bot/base.py", line 533, in _call_llm
+    result = await llm.agenerate(messages=[langchain_messages])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/langchain/chat_models/base.py", line 63, in agenerate
+    results = await asyncio.gather(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/3.11.1/lib/python3.11/asyncio/tasks.py", line 339, in __wakeup
+    future.result()
+  File "/Users/kevin/.pyenv/versions/3.11.1/lib/python3.11/asyncio/tasks.py", line 267, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/langchain/chat_models/openai.py", line 318, in _agenerate
+    response = await acompletion_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/langchain/chat_models/openai.py", line 63, in acompletion_with_retry
+    return await _completion_with_retry(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/_asyncio.py", line 88, in async_wrapped
+    return await fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/_asyncio.py", line 47, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/__init__.py", line 313, in iter
+    if not (is_explicit_retry or self.retry(retry_state)):
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/retry.py", line 262, in __call__
+    return any(r(retry_state) for r in self.retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/retry.py", line 262, in <genexpr>
+    return any(r(retry_state) for r in self.retries)
+               ^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/retry.py", line 262, in __call__
+    return any(r(retry_state) for r in self.retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/retry.py", line 262, in <genexpr>
+    return any(r(retry_state) for r in self.retries)
+               ^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/retry.py", line 262, in __call__
+    return any(r(retry_state) for r in self.retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/retry.py", line 262, in <genexpr>
+    return any(r(retry_state) for r in self.retries)
+               ^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/retry.py", line 262, in __call__
+    return any(r(retry_state) for r in self.retries)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/kevin/.pyenv/versions/llama_index/lib/python3.11/site-packages/tenacity/retry.py", line 262, in <genexpr>
+    return any(r(retry_state) for r in self.retries)
