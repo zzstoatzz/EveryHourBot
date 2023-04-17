@@ -7,7 +7,8 @@ import redis
 from requests_oauthlib import OAuth1Session, OAuth2Session
 from flask import Flask, redirect, request, session
 
-
+# maybe should run redis in docker
+# any safe external vault would work too
 r = redis.Redis(host='localhost', port=6379, db=0)
 
 app = Flask(__name__)
